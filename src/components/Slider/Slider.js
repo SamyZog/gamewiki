@@ -74,9 +74,7 @@ const Slider = ({ images, name, touch, hover, auto }) => {
 		>
 			<Hstack className={styles.track} style={{ transform: `translateX(-${currentSlide * width}px)` }}>
 				{images.map(({ id, image }) => {
-					return (
-						<img decoding="async" loading="lazy" className={styles.slide} key={id} src={image} alt={name} />
-					);
+					return <img className={styles.slide} key={id} src={image} alt={name} />;
 				})}
 			</Hstack>
 			<Hstack className={styles.overlay}>
