@@ -1,5 +1,19 @@
 .HomeRoute {
+	opacity: 0;
+	transform: scale(0.95);
+	animation-name: appear;
+	animation-duration: var(--slow);
+	animation-fill-mode: forwards;
+	animation-delay: var(--quicker);
+
 	.banner {
 		font-size: var(--text-4xl);
+	}
+}
+
+@keyframes appear {
+	100% {
+		opacity: 1;
+		transform: scale(1);
 	}
 }

@@ -1,6 +1,12 @@
 .GameRoute {
 	padding-bottom: var(--space-2xl);
 	width: 100%;
+	opacity: 0;
+	transform: scale(0.95);
+	animation-name: appear;
+	animation-duration: var(--slow);
+	animation-fill-mode: forwards;
+	animation-delay: var(--quicker);
 
 	.content {
 		max-width: var(--screen-lg);
@@ -23,5 +29,12 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		width: 100%;
+	}
+}
+
+@keyframes appear {
+	100% {
+		opacity: 1;
+		transform: scale(1);
 	}
 }

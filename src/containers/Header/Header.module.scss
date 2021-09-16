@@ -5,6 +5,11 @@
 	padding: var(--space-xl) 0;
 	position: sticky;
 	top: 0;
+	opacity: 0;
+	transform: translateY(-100%);
+	animation-name: appear;
+	animation-duration: var(--quicker);
+	animation-fill-mode: forwards;
 
 	.content {
 		flex-wrap: wrap;
@@ -14,5 +19,12 @@
 		svg {
 			font-size: var(--text-6xl);
 		}
+	}
+}
+
+@keyframes appear {
+	100% {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
