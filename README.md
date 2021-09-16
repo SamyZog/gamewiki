@@ -15,7 +15,7 @@ next.js and the RAWG API.
 
 <h2 id="demo">Demo</h2>
 
-[KinoWIKI](https://video-game-gallery.vercel.app/)
+[DEMO](https://video-game-gallery.vercel.app/)
 
 <h2 id="host">Hosting</h2>
 
