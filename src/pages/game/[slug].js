@@ -1,13 +1,24 @@
+import { useRouter } from "next/dist/client/router";
+import Box from "../../components/Box/Box";
+import Spinner from "../../components/Spinner/Spinner";
 import GameRoute from "../../routes/GameRoute/GameRoute";
 
 export default function Game(props) {
 	const { data } = props;
+	const router = useRouter();
+
+	if (router.isFallback) {
+		return (
+			<Box>
+				<Spinner />
+			</Box>
+		);
+	}
+
 	return <GameRoute imageInfo={data} />;
 }
 
 export async function getStaticPaths(context) {
-	// too many paths to pre-render, we set fallback to true https://nextjs.org/docs/basic-features/data-fetching#when-is-fallback-true-useful
-	// used fallback: true over fallback: "blocking" to load the page faster from the user's perspective https://nextjs.org/docs/basic-features/data-fetching#fallback-blocking
 	return { paths: [], fallback: true };
 }
 
@@ -21,7 +32,7 @@ export async function getStaticProps(context) {
 		};
 	} catch (error) {
 		return {
-			props: {},
+			notFound: true,
 		};
 	}
 }
