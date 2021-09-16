@@ -1,6 +1,22 @@
 .Gallery {
+	.listItem {
+		--delay: 0;
+		opacity: 0;
+		transform: translateY(10%);
+		animation-name: appear;
+		animation-fill-mode: forwards;
+		animation-duration: var(--quick);
+		animation-delay: var(--delay);
+	}
 }
 
 .trigger {
 	height: 5vh;
+}
+
+@keyframes appear {
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }

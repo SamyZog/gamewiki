@@ -12,6 +12,7 @@ const Gallery = () => {
 	const galleryRef = useRef();
 	const dispatch = useDispatch();
 	const nextUrl = useSelector(selectNextUrl);
+	const startRef = useRef(28);
 
 	async function fetchMoreGames() {
 		try {
@@ -19,6 +20,7 @@ const Gallery = () => {
 			const data = await res.json();
 			const { next, results } = data;
 			dispatch(addGames({ next, results }));
+			startRef.current += results.length - 1;
 		} catch (error) {}
 	}
 
@@ -39,9 +41,13 @@ const Gallery = () => {
 	return (
 		<>
 			<Grid as="ul" className={styles.Gallery}>
-				{games?.map(({ id, ...rest }) => {
+				{games?.map(({ id, ...rest }, i) => {
+					let counter = i;
+					if (counter >= startRef.current) {
+						counter -= startRef.current;
+					}
 					return (
-						<Box key={id} as="li">
+						<Box key={id} as="li" style={{ "--delay": `${counter++ * 100}ms` }} className={styles.listItem}>
 							<GameCard {...rest} id={id} />
 						</Box>
 					);
