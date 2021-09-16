@@ -14,7 +14,7 @@ const GameCard = ({ id, slug, name, released, rating, background_image }) => {
 				<RouteLink href={`/game/${slug}`}>{name}</RouteLink>
 				<Badge>{rating.toFixed(2)}</Badge>
 			</Hstack>
-			<img loading="lazy" className={styles.poster} src={background_image} alt={name} />
+			<img className={styles.poster} src={background_image} alt={name} />
 			<Hstack className={styles.meta}>
 				Release date:
 				<Text>{released}</Text>
