@@ -18,9 +18,6 @@ const GameRoute = ({ imageInfo }) => {
 		fetcher,
 	);
 
-	console.log(data);
-	console.log(imageInfo);
-
 	return (
 		<Center as="section" className={styles.GameRoute}>
 			<Box className={styles.content}>

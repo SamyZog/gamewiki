@@ -12,9 +12,6 @@ const gamesSlice = createSlice({
 	reducers: {
 		addGames: (state, action) => {
 			const { results, next } = action.payload;
-
-			console.log(results);
-
 			state.nextUrl = next;
 			state.games.push(...results);
 		},
