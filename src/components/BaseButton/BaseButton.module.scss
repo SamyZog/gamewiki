@@ -1,0 +1,32 @@
+.BaseButton {
+	border: none;
+	cursor: pointer;
+	border-radius: var(--br);
+	padding: var(--space-sm);
+	line-height: var(--line-none);
+	font: inherit;
+	transition-duration: var(--quicker);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--space-xs);
+	color: var(--dark);
+	font-family: var(--jet-brains);
+	background-color: var(--light);
+	text-transform: lowercase;
+	font-weight: var(--bold);
+
+	svg {
+		display: block;
+	}
+
+	&:hover {
+		background-color: var(--special);
+	}
+
+	&:disabled {
+		color: var(--light);
+		background-color: var(--light-tint);
+		cursor: not-allowed;
+	}
+}

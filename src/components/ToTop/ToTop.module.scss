@@ -1,0 +1,10 @@
+.ToTop {
+	position: fixed;
+	bottom: var(--space-xl);
+	right: var(--space-xl);
+	opacity: 0.25;
+
+	&:hover {
+		opacity: 1;
+	}
+}

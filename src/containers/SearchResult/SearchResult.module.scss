@@ -1,0 +1,52 @@
+.SearchResult {
+	top: 130%;
+	position: absolute;
+	width: 100%;
+	height: auto !important;
+	border-radius: var(--br);
+	opacity: 0;
+	transform: scale(0.5);
+	animation-duration: var(--quicker);
+	animation-fill-mode: forwards;
+	animation-name: fade-in;
+	background-color: var(--dark-tint);
+	max-height: 60vh;
+	overflow-y: scroll;
+	transform-origin: top center;
+
+	.list {
+		gap: 0;
+	}
+
+	.listItem {
+		padding: var(--space-sm);
+		background-color: var(--dark-tint);
+		width: 100%;
+
+		&:hover {
+			background-color: var(--dark);
+		}
+	}
+
+	.poster {
+		height: var(--space-5xl);
+		width: var(--space-3xl);
+		object-fit: cover;
+		border-radius: var(--br);
+
+		svg {
+			font-size: var(--text-2xl);
+		}
+	}
+
+	.noResponseBox {
+		height: 20vh;
+	}
+}
+
+@keyframes fade-in {
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}

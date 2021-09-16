@@ -1,0 +1,27 @@
+.GameRoute {
+	padding-bottom: var(--space-2xl);
+	width: 100%;
+
+	.content {
+		max-width: var(--screen-lg);
+		width: 100%;
+	}
+
+	.wrapper {
+		width: 100%;
+		justify-content: flex-start;
+	}
+
+	.banner {
+		font-size: var(--text-4xl);
+		width: auto;
+	}
+
+	.sliderContainer {
+		height: calc(var(--space-9xl) * 2);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		width: 100%;
+	}
+}

@@ -1,0 +1,15 @@
+.Spinner {
+	svg {
+		font-size: var(--text-2xl);
+		animation-name: spin;
+		animation-duration: var(--quicker);
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(1turn);
+	}
+}

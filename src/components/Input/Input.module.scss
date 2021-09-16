@@ -1,0 +1,23 @@
+.Input {
+	font: inherit;
+	border: none;
+	border-radius: var(--br);
+	background-color: var(--light-tint);
+	transition-duration: var(--quicker);
+	position: relative;
+	padding: var(--space-sm);
+	line-height: var(--line-none);
+	font-family: var(--poppins);
+	width: 100%;
+
+	&:focus,
+	&:hover {
+		background-color: var(--light);
+		outline: none;
+	}
+
+	&::placeholder {
+		color: var(--dark);
+		opacity: var(--opacity);
+	}
+}

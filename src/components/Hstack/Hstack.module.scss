@@ -1,0 +1,7 @@
+.Hstack {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-xl);
+	list-style: none;
+}

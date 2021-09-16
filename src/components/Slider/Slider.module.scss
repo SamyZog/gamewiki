@@ -1,0 +1,52 @@
+.Slider {
+	width: 100%;
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+
+	.overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		gap: 0;
+	}
+
+	.invisibleSelectors {
+		flex: 1 1 auto;
+		height: 100%;
+	}
+
+	.selectorButtons {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: var(--space-xs);
+		bottom: 0;
+	}
+
+	.selected {
+		background-color: var(--special);
+	}
+
+	.selectorButton {
+		box-shadow: var(--shadow);
+		font-size: var(--text-xs);
+		border-radius: 50%;
+	}
+
+	.track {
+		width: 100%;
+		height: 100%;
+		gap: 0;
+		transition-duration: var(--quicker);
+	}
+
+	.slide {
+		flex: 1 0 auto;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}

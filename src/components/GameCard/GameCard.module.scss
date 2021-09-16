@@ -1,0 +1,29 @@
+.GameCard {
+	background-color: var(--dark-tint);
+	height: 100%;
+	font-size: var(--space-md);
+	border-radius: var(--br);
+	gap: 0;
+
+	.head {
+		width: 100%;
+		justify-content: space-between;
+		padding: var(--space-md);
+	}
+
+	.poster {
+		height: 200px;
+		width: 100%;
+		object-fit: cover;
+	}
+
+	.meta {
+		justify-content: space-between;
+		width: 100%;
+		padding: var(--space-md);
+
+		* {
+			width: auto;
+		}
+	}
+}

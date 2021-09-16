@@ -1,0 +1,45 @@
+.DropDown {
+	width: 100%;
+	width: var(--space-9xl);
+	position: relative;
+	font-size: var(--text-sm);
+
+	button {
+		width: 100%;
+		border-radius: 0;
+		justify-content: space-between;
+		text-align: left;
+	}
+
+	li {
+		width: 100%;
+	}
+
+	.currentChoice {
+		width: 100%;
+		border-radius: var(--br);
+	}
+
+	.choiceList {
+		border-radius: var(--br);
+		gap: 0;
+		position: absolute;
+		top: 120%;
+		left: 0;
+		width: 100%;
+		max-height: 40vh;
+		overflow-y: scroll;
+		transform: scaleY(0.5);
+		opacity: 0;
+		transform-origin: top;
+
+		animation: fade-in var(--quicker) forwards;
+	}
+}
+
+@keyframes fade-in {
+	100% {
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
