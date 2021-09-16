@@ -1,6 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import Box from "../../components/Box/Box";
-import Spinner from "../../components/Spinner/Spinner";
+import Fallback from "../../components/Fallback/Fallback";
 import GameRoute from "../../routes/GameRoute/GameRoute";
 
 export default function Game(props) {
@@ -8,14 +7,10 @@ export default function Game(props) {
 	const router = useRouter();
 
 	if (router.isFallback) {
-		return (
-			<Box>
-				<Spinner />
-			</Box>
-		);
+		return <Fallback />;
 	}
 
-	return <GameRoute imageInfo={data} />;
+	return <GameRoute gameInfo={data} />;
 }
 
 export async function getStaticPaths(context) {
