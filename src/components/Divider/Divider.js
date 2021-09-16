@@ -5,7 +5,7 @@ import styles from "./Divider.module.scss";
 const Divider = ({ className, ...props }, ref) => {
 	const css = joinClasses(styles.Divider, className);
 
-	return <hr className={css} {...props} />;
+	return <hr ref={ref} className={css} {...props} />;
 };
 
 export default memo(forwardRef(Divider));

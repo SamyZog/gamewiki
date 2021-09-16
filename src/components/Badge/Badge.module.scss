@@ -2,7 +2,6 @@
 	border-radius: var(--br);
 	padding: var(--space-sm);
 	line-height: var(--line-none);
-	font: inherit;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -10,6 +9,5 @@
 	color: var(--light);
 	font-family: var(--jet-brains);
 	background-color: var(--special-tint);
-	text-transform: lowercase;
 	font-weight: var(--bold);
 }

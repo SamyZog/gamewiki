@@ -135,7 +135,7 @@ const Discover = () => {
 
 	return (
 		<Hstack className={styles.Discover}>
-			<DropDown initialChoice={sort?.option || "Sort"}>{SortOptions}</DropDown>
+			<DropDown initialChoice={sort?.option || "sort"}>{SortOptions}</DropDown>
 			<DropDown filter isLoading={!platforms} initialChoice="Platforms" choices={platformIds?.length}>
 				{PlatformFilters}
 			</DropDown>

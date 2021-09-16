@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Box from "../../components/Box/Box";
 import GameCard from "../../components/GameCard/GameCard";
@@ -12,7 +12,6 @@ const Gallery = () => {
 	const galleryRef = useRef();
 	const dispatch = useDispatch();
 	const nextUrl = useSelector(selectNextUrl);
-	const startRef = useRef(28);
 
 	async function fetchMoreGames() {
 		try {
@@ -20,15 +19,16 @@ const Gallery = () => {
 			const data = await res.json();
 			const { next, results } = data;
 			dispatch(addGames({ next, results }));
-			startRef.current += results.length - 1;
-		} catch (error) {}
+		} catch (error) {
+			alert("Something went wrong!");
+		}
 	}
 
 	useEffect(() => {
 		const gallery = galleryRef.current;
 		observerRef.current = new IntersectionObserver(
 			(entries) => {
-				if (entries[0].isIntersecting) {
+				if (entries[0].isIntersecting && nextUrl) {
 					fetchMoreGames();
 				}
 			},
@@ -38,24 +38,20 @@ const Gallery = () => {
 		return () => observerRef.current.unobserve(gallery);
 	}, [nextUrl]);
 
+	const gamesGrid = useMemo(() => {
+		return games?.map(({ id, ...rest }) => (
+			<Box key={id} as="li">
+				<GameCard {...rest} id={id} />
+			</Box>
+		));
+	}, [nextUrl]);
+
 	return (
 		<>
-			<Grid as="ul" className={styles.Gallery}>
-				{games?.map(({ id, ...rest }, i) => {
-					let counter = i;
-					if (counter >= startRef.current) {
-						counter -= startRef.current;
-					}
-					return (
-						<Box key={id} as="li" style={{ "--delay": `${counter++ * 100}ms` }} className={styles.listItem}>
-							<GameCard {...rest} id={id} />
-						</Box>
-					);
-				})}
-			</Grid>
+			<Grid as="ul">{gamesGrid}</Grid>
 			<Box ref={galleryRef} className={styles.trigger} />
 		</>
 	);
 };
 
-export default Gallery;
+export default memo(Gallery);

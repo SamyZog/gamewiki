@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import { memo } from "react";
 import Badge from "../Badge/Badge";
 import Hstack from "../Hstack/Hstack";
@@ -14,7 +14,15 @@ const GameCard = ({ id, slug, name, released, rating, background_image, counter 
 				<RouteLink href={`/game/${slug}`}>{name}</RouteLink>
 				<Badge>{rating.toFixed(2)}</Badge>
 			</Hstack>
-			<img className={styles.poster} src={background_image} alt={name} />
+			<Image
+				quality={50}
+				height={300}
+				width={500}
+				layout="intrinsic"
+				objectFit="cover"
+				src={background_image || "/placeholder.jpg"}
+				alt={name}
+			/>
 			<Hstack className={styles.meta}>
 				Release date:
 				<Text>{released}</Text>

@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { joinClasses } from "../../utils/joinClasses";
 import BaseButton from "../BaseButton/BaseButton";
@@ -9,23 +9,14 @@ import styles from "./Slider.module.scss";
 const Slider = ({ images, name, touch, hover, auto }) => {
 	const sliderRef = useRef();
 	const [currentSlide, setCurrentSlide] = useState(0);
-	const [width, setWidth] = useState(null);
+	const widthRef = useRef(0);
 	const initialX = useRef();
 	const deltaX = useRef();
 	const timeoutRef = useRef();
 
 	useEffect(() => {
-		if (auto) {
-			timeoutRef.current = setTimeout(() => {
-				getnextSlide();
-			}, 3000);
-			return () => clearTimeout(timeoutRef.current);
-		}
-	}, [currentSlide]);
-
-	useEffect(() => {
 		const width = sliderRef.current.getBoundingClientRect().width;
-		setWidth(width);
+		widthRef.current = width;
 	}, []);
 
 	const getnextSlide = () => {
@@ -45,6 +36,7 @@ const Slider = ({ images, name, touch, hover, auto }) => {
 	};
 
 	const setSlideManually = (i) => {
+		console.log(widthRef.current);
 		setCurrentSlide(i);
 	};
 
@@ -72,9 +64,13 @@ const Slider = ({ images, name, touch, hover, auto }) => {
 			onTouchMove={handleTouchMove}
 			onTouchEnd={handleTouchEnd}
 		>
-			<Hstack className={styles.track} style={{ transform: `translateX(-${currentSlide * width}px)` }}>
+			<Hstack className={styles.track} style={{ transform: `translateX(-${currentSlide * widthRef.current}px)` }}>
 				{images.map(({ id, image }) => {
-					return <img className={styles.slide} key={id} src={image} alt={name} />;
+					return (
+						<Box key={id} className={styles.slide}>
+							<Image objectFit="cover" layout="fill" src={image} alt={name} />
+						</Box>
+					);
 				})}
 			</Hstack>
 			<Hstack className={styles.overlay}>

@@ -1,8 +1,7 @@
 .DropDown {
-	width: 100%;
-	width: var(--space-9xl);
 	position: relative;
 	font-size: var(--text-sm);
+	min-width: 250px;
 
 	button {
 		width: 100%;
@@ -16,7 +15,6 @@
 	}
 
 	.currentChoice {
-		width: 100%;
 		border-radius: var(--br);
 	}
 

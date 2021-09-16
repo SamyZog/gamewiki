@@ -3,11 +3,11 @@ import { joinClasses } from "../../utils/joinClasses";
 import Box from "../Box/Box";
 import styles from "./Badge.module.scss";
 
-const Badge = ({ children, className, ...props }, ref) => {
+const Badge = ({ children, as, className, ...props }, ref) => {
 	const css = joinClasses(styles.Badge, className);
 
 	return (
-		<Box className={css} {...props}>
+		<Box ref={ref} as={as} className={css} {...props}>
 			{children}
 		</Box>
 	);

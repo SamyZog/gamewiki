@@ -1,6 +1,7 @@
 :root {
 	box-sizing: border-box;
 	scroll-behavior: smooth;
+	background-color: var(--dark);
 }
 
 *,
@@ -12,5 +13,6 @@
 }
 
 #__next {
-	background-color: var(--dark);
+	height: 100vh;
+	position: relative;
 }

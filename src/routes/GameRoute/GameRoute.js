@@ -19,7 +19,11 @@ const GameRoute = ({ gameInfo }) => {
 	);
 
 	return (
-		<Center as="section" className={styles.GameRoute}>
+		<Center
+			as="section"
+			className={styles.GameRoute}
+			style={{ backgroundImage: `radial-gradient(rgba(0,0,0,0.8),var(--dark)), url(${background_image})` }}
+		>
 			<Box className={styles.content}>
 				<Hstack>
 					<Box>
