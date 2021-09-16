@@ -11,7 +11,7 @@ const Header = () => {
 	return (
 		<Center as="header" className={styles.Header}>
 			<Container>
-				<Hstack>
+				<Hstack className={styles.content}>
 					<RouteLink href="/">
 						<IoGameController />
 					</RouteLink>

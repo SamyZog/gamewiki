@@ -2,9 +2,13 @@
 	z-index: var(--closest);
 	border-bottom: var(--outline);
 	backdrop-filter: var(--blur);
-	height: 10vh;
+	padding: var(--space-xl) 0;
 	position: sticky;
 	top: 0;
+
+	.content {
+		flex-wrap: wrap;
+	}
 
 	a {
 		svg {

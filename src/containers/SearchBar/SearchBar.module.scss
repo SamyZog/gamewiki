@@ -1,7 +1,7 @@
 .SearchBar {
 	gap: 0;
 	position: relative;
-	width: 60%;
+	flex: 1 0 15rem;
 
 	& > * {
 		height: var(--space-3xl);
