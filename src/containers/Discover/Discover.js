@@ -43,7 +43,7 @@ const Discover = () => {
 		return null;
 	}, [sort.method, platformIds.length]);
 
-	const { data, error } = useSWR(url);
+	const { data } = useSWR(url);
 
 	useEffect(() => {
 		if (mountedRef.current) {

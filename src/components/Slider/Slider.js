@@ -6,13 +6,12 @@ import Box from "../Box/Box";
 import Hstack from "../Hstack/Hstack";
 import styles from "./Slider.module.scss";
 
-const Slider = ({ images, name, touch, hover, auto }) => {
+const Slider = ({ images, name }) => {
 	const sliderRef = useRef();
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const widthRef = useRef(0);
 	const initialX = useRef();
 	const deltaX = useRef();
-	const timeoutRef = useRef();
 
 	useEffect(() => {
 		const width = sliderRef.current.getBoundingClientRect().width;
@@ -36,7 +35,6 @@ const Slider = ({ images, name, touch, hover, auto }) => {
 	};
 
 	const setSlideManually = (i) => {
-		console.log(widthRef.current);
 		setCurrentSlide(i);
 	};
 

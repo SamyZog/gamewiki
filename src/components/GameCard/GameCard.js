@@ -7,7 +7,7 @@ import Text from "../Text/Text";
 import Vstack from "../Vstack/Vstack";
 import styles from "./GameCard.module.scss";
 
-const GameCard = ({ id, slug, name, released, rating, background_image, counter }) => {
+const GameCard = ({ slug, name, released, rating, background_image }) => {
 	return (
 		<Vstack className={styles.GameCard} style={{}}>
 			<Hstack className={styles.head}>

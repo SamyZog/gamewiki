@@ -4,6 +4,7 @@ import Badge from "../../components/Badge/Badge";
 import BaseLink from "../../components/BaseLink/BaseLink";
 import Box from "../../components/Box/Box";
 import Center from "../../components/Center/Center";
+import Container from "../../components/Container/Container";
 import Divider from "../../components/Divider/Divider";
 import Hstack from "../../components/Hstack/Hstack";
 import Slider from "../../components/Slider/Slider";
@@ -24,7 +25,7 @@ const GameRoute = ({ gameInfo }) => {
 			className={styles.GameRoute}
 			style={{ backgroundImage: `radial-gradient(rgba(0,0,0,0.8),var(--dark)), url(${background_image})` }}
 		>
-			<Box className={styles.content}>
+			<Container className={styles.content}>
 				<Hstack>
 					<Box>
 						<Text as="h1" className={styles.banner}>
@@ -38,8 +39,8 @@ const GameRoute = ({ gameInfo }) => {
 					</Box>
 					<Badge>{rating.toFixed(2)}</Badge>
 				</Hstack>
-				<Divider />
 				<Vstack>
+					<Divider />
 					<Box style={{ backgroundImage: `url(${background_image})` }} className={styles.sliderContainer}>
 						{data && <Slider images={data.results} />}
 						{error && (
@@ -48,10 +49,12 @@ const GameRoute = ({ gameInfo }) => {
 							</Center>
 						)}
 					</Box>
+					<Divider />
+
 					<Text as="h3">Description:</Text>
 					<Box dangerouslySetInnerHTML={{ __html: description }} />
 				</Vstack>
-			</Box>
+			</Container>
 		</Center>
 	);
 };

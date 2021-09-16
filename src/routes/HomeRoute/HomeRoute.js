@@ -7,7 +7,7 @@ import Discover from "../../containers/Discover/Discover";
 import Gallery from "../../containers/Gallery/Gallery";
 import styles from "./HomeRoute.module.scss";
 
-const HomeRoute = (props) => {
+const HomeRoute = () => {
 	return (
 		<Container>
 			<Vstack as="section" className={styles.HomeRoute}>
