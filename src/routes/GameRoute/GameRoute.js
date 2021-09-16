@@ -44,9 +44,8 @@ const GameRoute = ({ gameInfo }) => {
 							</Center>
 						)}
 					</Box>
-
 					<Text as="h3">Description:</Text>
-					<Text dangerouslySetInnerHTML={{ __html: description }}></Text>
+					<Box dangerouslySetInnerHTML={{ __html: description }} />
 				</Vstack>
 			</Box>
 		</Center>
