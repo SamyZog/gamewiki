@@ -15,7 +15,6 @@ import {
 	setSortMethod,
 } from "../../features/discoverSlice/discoverSlice";
 import { getGames } from "../../features/gamesSlice/gamesSlice";
-import { fetcher } from "../../utils/fetcher";
 import styles from "./Discover.module.scss";
 
 const Discover = () => {
@@ -44,7 +43,7 @@ const Discover = () => {
 		return null;
 	}, [sort.method, platformIds.length]);
 
-	const { data, error } = useSWR(url, fetcher);
+	const { data, error } = useSWR(url);
 
 	useEffect(() => {
 		if (mountedRef.current) {

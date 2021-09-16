@@ -7,7 +7,6 @@ import Divider from "../../components/Divider/Divider";
 import Slider from "../../components/Slider/Slider";
 import Text from "../../components/Text/Text";
 import Vstack from "../../components/Vstack/Vstack";
-import { fetcher } from "../../utils/fetcher";
 import styles from "./GameRoute.module.scss";
 
 const GameRoute = ({ imageInfo }) => {
@@ -15,7 +14,6 @@ const GameRoute = ({ imageInfo }) => {
 
 	const { data, error } = useSWR(
 		`https://api.rawg.io/api/games/${slug}/screenshots?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}`,
-		fetcher,
 	);
 
 	return (

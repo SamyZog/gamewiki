@@ -8,7 +8,6 @@ import Input from "../../components/Input/Input";
 import { addSearchResults, clearSearchResults, selectStatus } from "../../features/searchSlice/searchSlice";
 import useDebounce from "../../hooks/useDebounce";
 import { useMounted } from "../../hooks/useMounted";
-import { fetcher } from "../../utils/fetcher";
 import SearchResult from "../SearchResult/SearchResult";
 import styles from "./SearchBar.module.scss";
 
@@ -26,7 +25,6 @@ const SearchBar = () => {
 		debouncedInput
 			? `https://api.rawg.io/api/games?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&search_precise=true&search=${debouncedInput}&ordering=-rating`
 			: null,
-		fetcher,
 	);
 
 	function handleChange(e) {
