@@ -50,7 +50,6 @@ const GameRoute = ({ gameInfo }) => {
 						)}
 					</Box>
 					<Divider />
-
 					<Text as="h3">Description:</Text>
 					<Box dangerouslySetInnerHTML={{ __html: description }} />
 				</Vstack>

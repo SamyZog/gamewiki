@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import { memo, useMemo } from "react";
 import { IoGameController } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +28,7 @@ const SearchResult = () => {
 				<Hstack key={id} as="li" className={styles.listItem}>
 					<Hstack>
 						{background_image ? (
-							<img className={styles.poster} src={background_image} alt={name} />
+							<Image className={styles.poster} src={background_image} alt={name} height={60} width={40} />
 						) : (
 							<Center className={styles.poster}>
 								<IoGameController />
