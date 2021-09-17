@@ -54,6 +54,9 @@ const Discover = () => {
 	}, [data]);
 
 	useEffect(() => {
+		// no need to fetch the same response on each navigation
+		if (platforms.length > 0) return;
+
 		fetch(`https://api.rawg.io/api/platforms?key=${process.env.NEXT_PUBLIC_RAWG_API_KEY}&ordering=name`)
 			.then((res) => res.json())
 			.then((platforms) => dispatch(setFilters({ name: "platforms", filters: platforms.results })))
