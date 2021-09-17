@@ -4,12 +4,16 @@ const initialState = {
 	games: [],
 	status: null,
 	nextUrl: "",
+	scrollPosition: "",
 };
 
 const gamesSlice = createSlice({
 	name: "games",
 	initialState,
 	reducers: {
+		addScrollPosition: (state, action) => {
+			state.scrollPosition = action.payload;
+		},
 		addGames: (state, action) => {
 			const { results, next } = action.payload;
 			state.nextUrl = next;
@@ -23,10 +27,11 @@ const gamesSlice = createSlice({
 	},
 });
 
-export const { addGames, getGames } = gamesSlice.actions;
+export const { addGames, getGames, addScrollPosition, setFetched } = gamesSlice.actions;
 
 const gamesSliceReducer = gamesSlice.reducer;
 export default gamesSliceReducer;
 
 export const selectGames = (state) => state.games.games;
 export const selectNextUrl = (state) => state.games.nextUrl;
+export const selectScrollPosition = (state) => state.games.scrollPosition;

@@ -1,17 +1,34 @@
-import { memo, useEffect, useMemo, useRef } from "react";
+import { useRouter } from "next/dist/client/router";
+import { memo, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Box from "../../components/Box/Box";
 import GameCard from "../../components/GameCard/GameCard";
 import Grid from "../../components/Grid/Grid";
-import { addGames, selectGames, selectNextUrl } from "../../features/gamesSlice/gamesSlice";
+import { addGames, addScrollPosition } from "../../features/gamesSlice/gamesSlice";
 import styles from "./Gallery.module.scss";
 
 const Gallery = () => {
-	const games = useSelector(selectGames);
+	const { games, nextUrl, scrollPosition } = useSelector((state) => state.games);
 	const observerRef = useRef();
-	const galleryRef = useRef();
+	const triggerRef = useRef();
 	const dispatch = useDispatch();
-	const nextUrl = useSelector(selectNextUrl);
+
+	const router = useRouter();
+
+	function setScrollPosition() {
+		dispatch(addScrollPosition(window.scrollY));
+	}
+
+	useLayoutEffect(() => {
+		if (scrollPosition) {
+			window.scrollTo({ top: scrollPosition, behavior: "auto" });
+		}
+	}, []);
+
+	useEffect(() => {
+		router.events.on("routeChangeStart", setScrollPosition);
+		return () => router.events.off("routeChangeStart", setScrollPosition);
+	}, []);
 
 	async function fetchMoreGames() {
 		try {
@@ -25,7 +42,7 @@ const Gallery = () => {
 	}
 
 	useEffect(() => {
-		const gallery = galleryRef.current;
+		const trigger = triggerRef.current;
 		observerRef.current = new IntersectionObserver(
 			(entries) => {
 				if (entries[0].isIntersecting && nextUrl) {
@@ -34,22 +51,22 @@ const Gallery = () => {
 			},
 			{ threshold: 1 },
 		);
-		observerRef.current.observe(gallery);
-		return () => observerRef.current.unobserve(gallery);
+		observerRef.current.observe(trigger);
+		return () => observerRef.current.unobserve(trigger);
 	}, [nextUrl]);
 
 	const gamesGrid = useMemo(() => {
-		return games?.map(({ id, ...rest }) => (
+		return games.map(({ id, ...rest }) => (
 			<Box key={id} as="li">
 				<GameCard {...rest} id={id} />
 			</Box>
 		));
-	}, [nextUrl]);
+	}, [games]);
 
 	return (
 		<>
 			<Grid as="ul">{gamesGrid}</Grid>
-			<Box ref={galleryRef} className={styles.trigger} />
+			<Box ref={triggerRef} className={styles.trigger} />
 		</>
 	);
 };
