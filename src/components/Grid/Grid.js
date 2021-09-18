@@ -7,7 +7,7 @@ const Grid = ({ children, as, className, ...props }, ref) => {
 	const css = joinClasses(styles.Grid, className);
 
 	return (
-		<Box ref={ref} className={css} {...props}>
+		<Box ref={ref} as={as} className={css} {...props}>
 			{children}
 		</Box>
 	);
