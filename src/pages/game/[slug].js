@@ -13,7 +13,7 @@ export default function Game(props) {
 	return <GameRoute gameInfo={data} />;
 }
 
-export async function getStaticPaths(context) {
+export async function getStaticPaths() {
 	return { paths: [], fallback: true };
 }
 

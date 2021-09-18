@@ -1,13 +1,13 @@
 import { useRouter } from "next/dist/client/router";
-import { memo, useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { memo, useEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Box from "../../components/Box/Box";
 import GameCard from "../../components/GameCard/GameCard";
 import Grid from "../../components/Grid/Grid";
-import { addGames, addScrollPosition } from "../../features/gamesSlice/gamesSlice";
+import { addGames, addScrollPosition, getGames } from "../../features/gamesSlice/gamesSlice";
 import styles from "./Gallery.module.scss";
 
-const Gallery = () => {
+const Gallery = ({ data }) => {
 	const { games, nextUrl, scrollPosition } = useSelector((state) => state.games);
 	const observerRef = useRef();
 	const triggerRef = useRef();
@@ -19,13 +19,16 @@ const Gallery = () => {
 		dispatch(addScrollPosition(window.scrollY));
 	}
 
-	useLayoutEffect(() => {
-		if (scrollPosition) {
-			window.scrollTo({ top: scrollPosition, behavior: "auto" });
-		}
+	useEffect(() => {
+		if (games.length > 0) return;
+		const { next, results } = data;
+		dispatch(getGames({ next, results }));
 	}, []);
 
 	useEffect(() => {
+		if (scrollPosition) {
+			window.scrollTo({ top: scrollPosition, behavior: "auto" });
+		}
 		router.events.on("routeChangeStart", setScrollPosition);
 		return () => router.events.off("routeChangeStart", setScrollPosition);
 	}, []);
@@ -56,7 +59,8 @@ const Gallery = () => {
 	}, [nextUrl]);
 
 	const gamesGrid = useMemo(() => {
-		return games.map(({ id, ...rest }) => (
+		const array = games.length > 0 ? games : data.results;
+		return array.map(({ id, ...rest }) => (
 			<Box key={id} as="li">
 				<GameCard {...rest} id={id} />
 			</Box>

@@ -7,7 +7,7 @@ import Discover from "../../containers/Discover/Discover";
 import Gallery from "../../containers/Gallery/Gallery";
 import styles from "./HomeRoute.module.scss";
 
-const HomeRoute = () => {
+const HomeRoute = ({ data }) => {
 	return (
 		<Container>
 			<Vstack as="section" className={styles.HomeRoute}>
@@ -15,7 +15,7 @@ const HomeRoute = () => {
 					NEW & POPULAR RELEASES
 				</Text>
 				<Discover />
-				<Gallery />
+				<Gallery data={data} />
 				<ToTop />
 			</Vstack>
 		</Container>

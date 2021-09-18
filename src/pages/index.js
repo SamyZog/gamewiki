@@ -1,22 +1,11 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getGames, selectGames } from "../features/gamesSlice/gamesSlice";
 import HomeRoute from "../routes/HomeRoute/HomeRoute";
 
 export default function Home(props) {
 	const { data } = props;
-	const { next, results } = data;
-	const dispatch = useDispatch();
-	const games = useSelector(selectGames);
-
-	useEffect(() => {
-		if (games.length > 0) return;
-		dispatch(getGames({ next, results }));
-	}, []);
 
 	return (
 		<>
-			<HomeRoute />
+			<HomeRoute data={data} />
 		</>
 	);
 }
