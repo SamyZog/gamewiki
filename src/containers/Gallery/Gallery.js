@@ -40,7 +40,7 @@ const Gallery = ({ data }) => {
 			const { next, results } = data;
 			dispatch(addGames({ next, results }));
 		} catch (error) {
-			alert("Something went wrong!");
+			alert("API Request limit has been reached!");
 		}
 	}
 
