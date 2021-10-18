@@ -15,6 +15,7 @@ export async function getStaticProps() {
 		const res = await fetch(
 			`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&ordering=-released&metacritic=80,100&page_size=28`,
 		);
+		
 		const data = await res.json();
 
 		return {
